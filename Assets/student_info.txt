@@ -1,0 +1,31 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(PlayerMover))]
+public class PlayerInputHandler : MonoBehaviour
+{
+    private PlayerControls controls;
+    private PlayerMover mover;
+
+    private void Awake()
+    {
+        controls = new PlayerControls();
+        mover = GetComponent<PlayerMover>();
+    }
+
+    private void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Gameplay.Disable();
+    }
+
+    private void Update()
+    {
+        Vector2 input = controls.Gameplay.Move.ReadValue<Vector2>();
+        mover.Move(input);
+    }
+}

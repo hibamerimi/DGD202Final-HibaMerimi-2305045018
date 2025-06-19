@@ -38,7 +38,7 @@ public class PelletCollector : MonoBehaviour
     public void ResetCounter()
     {
         _numberCollected = 0;
-        _counter.text = "0";
+    //    _counter.text = "0";
     }
     
     public void PelletCollected()
